@@ -1,2 +1,9 @@
-# DoAnCuoiKi_CNPM_ThuanDung
-Một công ty bán thực phẩm chức năng cho các Đại Lý cần phần mềm với các chức năng sau: - Phát triển chức năng cho kế toán tạo Phiếu nhập kho khi công ty nhập khẩu hàng về (1 phiếu nhập kho sẽ gồm nhiều mặt hàng) - Phát triển chức năng cho phép đại lý có thể đặt danh sách mặt hàng và chọn hình thức thanh toán (Tiền mặt, chuyển khoản, Momo…) - Phát triển chức năng cho kế toán làm phiếu xuất kho để chuyển hàng cho các đại lý (in phiếu xuất hàng), cập nhật tình trạng đơn hàng là đang chuyển và cập nhật tình trạng thanh toán của đại lý. - Phát triển chức năng cho kế toán phép xem lại thống kê hàng ra hàng vào, doanh thu của từng tháng.
+# php_training01
+admin: Chứa các tập tin xử lý của trang quản trị.
+configs: Chứa các tập tin cấu hình website.
+extends: Chứa các thành phần mở rộng (Bộ soạn thảo...).
+libraries: Chứa thư viện cần thiết để lập trình.
+models: Chứa các tập tin xử lý tương tác với DB (Lấy dữ liệu, thêm mới, chỉnh sửa, xóa...).
+views: Chứa các tập tin giao diện HTML của website. Tôi chia thành hai nhóm là admin (Trang quản trị) và front (Trang người dùng).
+templates: Chứa các tập tin CSS, JS, hình ảnh... Tôi cũng chia làm hai nhóm là admin và front.
+userfiles: Chứa các tập tin do người dùng tải lên.

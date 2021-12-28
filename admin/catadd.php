@@ -30,7 +30,7 @@ $cat = new category();
                         </tr>
 						<tr> 
                             <td>
-                                <input type="submit" name="submit" Value="Save" />
+                                <input type="submit" name="submit" Value="Thêm" />
                             </td>
                         </tr>
                     </table>

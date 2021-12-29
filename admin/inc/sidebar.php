@@ -26,7 +26,7 @@
                 <li><a class="menuitem">Danh mục sản phẩm</a>
                     <ul class="submenu">
                         <li><a href="catadd.php">Thêm danh mục</a> </li>
-                        <li><a href="catlist.php">Thêm sản phẩm</a> </li>
+                        <li><a href="catlist.php">Danh sách danh mục</a> </li>
                     </ul>
                 </li>
                 <li><a class="menuitem">Product Option</a>

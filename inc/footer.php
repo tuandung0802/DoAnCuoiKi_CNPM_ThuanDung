@@ -36,7 +36,7 @@
 					<h4>Liên lạc</h4>
 						<ul>
 							<li><span>0342548657 (Mr. Dũng)</span></li>
-							<li><span>+88-01813458552 (Mr. Thuần)</span></li>
+							<li><span>0942730768 (Mr. Thuần)</span></li>
 						</ul>
 						<div class="social-icons">
 							<h4>Follow Us</h4>

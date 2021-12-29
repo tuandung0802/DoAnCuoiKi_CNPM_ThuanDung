@@ -3,12 +3,21 @@
 <?php include '../classes/category.php';?>
 <?php
 	$cat = new category();
+	if(isset($_GET['delid'])) {
+		$id = $_GET['delid'];
+		$delcat = $cat->del_category($id);
+	}
 	
 ?>
         <div class="grid_10">
             <div class="box round first grid">
                 <h2>Danh sách danh mục</h2>
-                <div class="block">        
+                <div class="block">  
+					<?php   
+					if(isset($delcat)){
+						echo $delcat;
+					}
+					?>
                     <table class="data display datatable" id="example">
 					<thead>
 						<tr>
@@ -29,7 +38,7 @@
 						<tr class="odd gradeX">
 							<td><?php echo $i; ?></td>
 							<td><?php echo $result['catName'] ?></td>
-							<td><a href="catedit.php?catid=<?php echo $result['catId'] ?>">Sửa</a> || <a href="?catid=<?php echo $result['catId'] ?>">Xóa</a></td>
+							<td><a href="catedit.php?catid=<?php echo $result['catId'] ?>">Sửa</a> || <a onclick = "return confirm('Xác nhận xóa')" href="?delid=<?php echo $result['catId'] ?>">Xóa</a></td>
 						</tr>
 						<?php
 						}

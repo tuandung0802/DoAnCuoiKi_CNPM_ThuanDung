@@ -29,6 +29,12 @@
                         <li><a href="catlist.php">Danh sách danh mục</a> </li>
                     </ul>
                 </li>
+                <li><a class="menuitem">Nhà cung cấp, thương hiệu</a>
+                    <ul class="submenu">
+                        <li><a href="brandadd.php">Thêm Nhà cung cấp, thương hiệu</a> </li>
+                        <li><a href="brandlist.php">Danh sách Nhà cung cấp, thương hiệu</a> </li>
+                    </ul>
+                </li>
                 <li><a class="menuitem">Product Option</a>
                     <ul class="submenu">
                         <li><a href="addproduct.php">Add Product</a> </li>

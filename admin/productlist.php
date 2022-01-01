@@ -42,9 +42,9 @@
 					<td><?php echo $i?></td>
 					<td><?php echo $result['productName']?></td>
 					<td><?php echo $result['price']?></td>
-					<td> <img src="uploads/<?php echo $result['image']?>" width="80" center></td>
-					<td><?php echo $result['catId']?></td>
-					<td><?php echo $result['brandId']?></td>
+					<td> <img src="uploads/<?php echo $result['image']?>" width="80" ></td>
+					<td><?php echo $result['catName']?></td>
+					<td><?php echo $result['brandName']?></td>
 					<td><?php echo $fm->textShorten($result['product_desc'],50)?></td>
 					<td><?php 
 					if($result['type']==0){
@@ -55,7 +55,7 @@
 					?></td>
 					
 					
-					<td><a href="">Edit</a> || <a href="">Delete</a></td>
+					<td><a href="productedit.php?productid=<?php echo $result['productId'] ?>">Edit</a> || <a href="">Delete</a></td>
 				</tr>
 				<?php
 				}

@@ -56,7 +56,14 @@
                 }
             }
             public function show_product(){
-                $query = "SELECT * FROM tbl_product order by productId desc";
+                $query = "
+                SELECT tbl_product.*, tbl_category.catName, tbl_brand.brandName
+
+                FROM tbl_product INNER JOIN tbl_category ON tbl_product.catId = tbl_category.catId
+
+                INNER JOIN tbl_brand ON tbl_product.brandId = tbl_brand.brandId
+                
+                order by tbl_product.productId desc";
                     $result = $this->db->select($query);
                     return $result;
             }
@@ -79,11 +86,11 @@
             //         }      
             //     }
             // }
-            // public function getcatbyId($id){
-            //     $query = "SELECT * FROM tbl_category WHERE catId = '$id'";
-            //         $result = $this->db->select($query);
-            //         return $result;
-            // }
+            public function getproductbyId($id){
+                $query = "SELECT * FROM tbl_product WHERE productId = '$id'";
+                    $result = $this->db->select($query);
+                    return $result;
+            }
 
             // public function del_category($id){
             //     $query = "DELETE FROM tbl_category WHERE catId = '$id'";

@@ -6,11 +6,24 @@
 <?php include_once '../helpers/format.php';?>
 <?php
 			$fm = new Format();
+			
+	$pd = new product();
+	if(isset($_GET['productid'])) {
+		$id = $_GET['productid'];
+		$delpro = $pd->del_product($id);
+	}
+	
+?>
 			?>
 <div class="grid_10">
     <div class="box round first grid">
         <h2>Post List</h2>
-        <div class="block">  
+        <div class="block">
+			<?php  
+			if(isset($delpro)){
+				echo $delpro;
+			}
+			?>
             <table class="data display datatable" id="example">
 			<thead>
 				<tr>
@@ -55,7 +68,7 @@
 					?></td>
 					
 					
-					<td><a href="productedit.php?productid=<?php echo $result['productId'] ?>">Edit</a> || <a href="">Delete</a></td>
+					<td><a href="productedit.php?productid=<?php echo $result['productId'] ?>">Edit</a> || <a href="?productid=<?php echo $result['productId'] ?>">Delete</a></td>
 				</tr>
 				<?php
 				}

@@ -12,7 +12,7 @@ if(!isset($_GET['productid']) || $_GET['productid']==Null){
 }
 	
 
-if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['producid'])){
+if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])){
 		
 
         $updateProduct = $pd->update_product($_POST, $_FILES, $id);
@@ -164,7 +164,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['producid'])){
 				<tr>
                     <td></td>
                     <td>
-                        <input type="submit" name="submit" Value="Save" />
+                        <input type="submit" name="submit" Value="Update" />
                     </td>
                 </tr>
             </table>

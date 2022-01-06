@@ -1,6 +1,8 @@
 <?php
-     include_once  '../lib/database.php';
-     include_once  '../helpers/format.php';
+
+    $filepath = realpath(dirname(__FILE__));
+     include_once  ($filepath.'/../lib/database.php');
+     include_once  ($filepath.'/../helpers/format.php');
 
 
 
@@ -150,6 +152,14 @@
                     }
                     return $result;
             }
+            //END BACKEND
+            public function getproduct_feathered(){
+                $query = "SELECT * FROM tbl_product WHERE type = '1'";
+                    $result = $this->db->select($query);
+                    return $result;
+            }
+
+
         }
 
         

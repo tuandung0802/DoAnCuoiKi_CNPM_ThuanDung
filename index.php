@@ -12,34 +12,24 @@
     		<div class="clear"></div>
     	</div>
 	      <div class="section group">
+			  <?php
+					$product_feathered = $product->getproduct_feathered();
+					if($product_feathered){
+						while($result = $product_feathered->fetch_assoc()){
+					
+
+			  ?>
 				<div class="grid_1_of_4 images_1_of_4">
-					 <a href="details.php"><img src="images/feature-pic1.png" alt="" /></a>
-					 <h2>Lorem Ipsum is simply </h2>
-					 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
-					 <p><span class="price">$505.22</span></p>
+					 <a href="details.php"><img src="admin/uploads/<?php echo $result['image'] ?>" alt="" /></a>
+					 <h2><?php echo $result['productName'] ?> </h2>
+					 <p><?php echo $fm->textShorten($result['product_desc'], 20) ?></p>
+					 <p><span class="price"><?php echo $result['price']." "."VND" ?></span></p>
 				     <div class="button"><span><a href="details.php" class="details">Details</a></span></div>
 				</div>
-				<div class="grid_1_of_4 images_1_of_4">
-					<a href="details.php"><img src="images/feature-pic2.jpg" alt="" /></a>
-					 <h2>Lorem Ipsum is simply </h2>
-					 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
-					 <p><span class="price">$620.87</span></p>   
-				     <div class="button"><span><a href="details.php" class="details">Details</a></span></div>
-				</div>
-				<div class="grid_1_of_4 images_1_of_4">
-					<a href="details.php"><img src="images/feature-pic3.jpg" alt="" /></a>
-					 <h2>Lorem Ipsum is simply </h2>
-					 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
-					 <p><span class="price">$220.97</span></p> 
-				     <div class="button"><span><a href="details.php" class="details">Details</a></span></div>
-				</div>
-				<div class="grid_1_of_4 images_1_of_4">
-					<img src="images/feature-pic4.png" alt="" />
-					 <h2>Lorem Ipsum is simply </h2>
-					 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
-					 <p><span class="price">$415.54</span></p>  
-				     <div class="button"><span><a href="details.php" class="details">Details</a></span></div>
-				</div>
+				<?php
+					}
+				}
+				?>
 			</div>
 			<div class="content_bottom">
     		<div class="heading">

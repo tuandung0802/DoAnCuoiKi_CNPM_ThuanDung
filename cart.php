@@ -18,88 +18,58 @@
 								<th width="20%">Tống tiền</th>
 								<th width="10%">Trạng thái</th>
 							</tr>
-							<tr>
-								<td>Tên sản phẩm</td>
-								<td><img src="images/new-pic3.jpg" alt=""/></td>
-								<td>Tk. 20000</td>
-								<td>
-									<form action="" method="post">
-										<input type="number" name="" value="1"/>
-										<input type="submit" name="submit" value="Update"/>
-									</form>
-								</td>
-								<td>Tk. 40000</td>
-								<td><a href="">X</a></td>
-							</tr>
+
+							<?php
+							$get_product_cart = $ct->get_product_cart();
+							if($get_product_cart){
+								$subtotal = 0;
+									while($result = $get_product_cart->fetch_assoc()){
+
+									
 							
+							?>
 							<tr>
-								<td>Product Title</td>
-								<td><img src="images/new-pic3.jpg" alt=""/></td>
-								<td>Tk. 20000</td>
+								<td><?php echo $result['productName']  ?></td>
+								<td><img src="admin/uploads/<?php echo $result['image'] ?>" alt=""/></td>
+								<td><?php echo $result['price'] ?></td>
 								<td>
 									<form action="" method="post">
-										<input type="number" name="" value="1"/>
+										<input type="number" name="quantity" min="0" value="<?php echo $result['quantity'] ?>"/>
 										<input type="submit" name="submit" value="Update"/>
 									</form>
 								</td>
-								<td>Tk. 40000</td>
+								<td><?php $total = $result['price'] * $result['quantity'];
+								echo $total?>
+							</td>
 								<td><a href="">X</a></td>
 							</tr>
+							<?php
+									$subtotal += $total;
+								}
+						}
+							?>
 							
-							<tr>
-								<td>Product Title</td>
-								<td><img src="images/new-pic3.jpg" alt=""/></td>
-								<td>Tk. 20000</td>
-								<td>
-									<form action="" method="post">
-										<input type="number" name="" value="1"/>
-										<input type="submit" name="submit" value="Update"/>
-									</form>
-								</td>
-								<td>Tk. 40000</td>
-								<td><a href="">X</a></td>
-							</tr>
-							<tr>
-								<td>Product Title</td>
-								<td><img src="images/new-pic3.jpg" alt=""/></td>
-								<td>Tk. 20000</td>
-								<td>
-									<form action="" method="post">
-										<input type="number" name="" value="1"/>
-										<input type="submit" name="submit" value="Update"/>
-									</form>
-								</td>
-								<td>Tk. 40000</td>
-								<td><a href="">X</a></td>
-							</tr>
 							
-							<tr>
-								<td>Product Title</td>
-								<td><img src="images/new-pic3.jpg" alt=""/></td>
-								<td>Tk. 20000</td>
-								<td>
-									<form action="" method="post">
-										<input type="number" name="" value="1"/>
-										<input type="submit" name="submit" value="Update"/>
-									</form>
-								</td>
-								<td>Tk. 40000</td>
-								<td><a href="">X</a></td>
-							</tr>
+							
 							
 						</table>
 						<table style="float:right;text-align:left;" width="40%">
 							<tr>
 								<th>Sub Total : </th>
-								<td>TK. 210000</td>
+								<td><?php
+									echo $subtotal;
+									?>								
+								</td>
 							</tr>
 							<tr>
 								<th>VAT : </th>
-								<td>TK. 31500</td>
+								<td>10%</td>
 							</tr>
 							<tr>
 								<th>Grand Total :</th>
-								<td>TK. 241500 </td>
+								<td><?php $vat = $subtotal * 0.1;
+								$gtotal = $vat + $subtotal;
+								echo $gtotal?> </td>
 							</tr>
 					   </table>
 					</div>

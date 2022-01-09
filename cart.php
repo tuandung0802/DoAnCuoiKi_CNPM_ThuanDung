@@ -47,6 +47,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])){
 							$get_product_cart = $ct->get_product_cart();
 							if($get_product_cart){
 								$subtotal = 0;
+								$qty =0;
 									while($result = $get_product_cart->fetch_assoc()){
 
 									
@@ -70,6 +71,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])){
 							</tr>
 							<?php
 									$subtotal += $total;
+								$qty = $qty + $result['quantity'];
+
 								}
 						}
 							?>
@@ -78,11 +81,20 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])){
 							
 							
 						</table>
+						<?php
+									$check_cart = $ct->check_cart();
+									if($check_cart){
+									
+									
+									?>
 						<table style="float:right;text-align:left;" width="40%">
 							<tr>
 								<th>Sub Total : </th>
 								<td><?php
 									echo $subtotal;
+									Session::set('sum',$subtotal);
+									Session::set('qty',$qty);
+
 									?>								
 								</td>
 							</tr>
@@ -96,6 +108,11 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])){
 								$gtotal = $vat + $subtotal;
 								echo $gtotal?> </td>
 							</tr>
+							<?php
+									}else{
+										echo 'Giỏ hàng trống';
+									}
+							?>
 					   </table>
 					</div>
 					<div class="shopping">

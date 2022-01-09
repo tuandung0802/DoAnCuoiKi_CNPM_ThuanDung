@@ -61,7 +61,19 @@ include_once  './helpers/format.php';
 					<div class="cart">
 						<a href="#" title="View my shopping cart" rel="nofollow">
 								<span class="cart_title">Giỏ hàng</span>
-								<span class="no_product">(Trống)</span>
+								<span class="no_product">
+									<?php
+									$check_cart = $ct->check_cart();
+									if($check_cart){
+									$sum = Session::get("sum");
+									$qty = Session::get("qty");
+
+									echo $sum.' '.'đ'.'-'.'SL:'.$qty;
+									}else{
+										echo 'Trống';
+									}
+									?>
+								</span>
 							</a>
 						</div>
 			      </div>

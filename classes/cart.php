@@ -64,6 +64,7 @@
                     WHERE cartId = '$cartId'";
                     $result = $this->db->update($query);
                     if($result){
+                        header('Location: cart.php');
                         $msg = "<span class='success'>Số lượng sản phẩm đã được thêm</span>";
                         return $msg;
                     }else{
@@ -78,13 +79,17 @@
                 $result = $this->db->delete($query);
                 if($result){
                     header('Location: cart.php');
-                    
                 }else{
                     $msg = "<span class='success'>Xóa sản phẩm không thành công</span>";
                     return $msg;
                 }
             }
-            
+            public function check_cart(){
+                $sId=session_id();
+                $query = "SELECT * FROM tbl_cart WHERE sId = '$sId'";
+                $result = $this->db->select($query);
+                return $result;
+            }
         }
 
         

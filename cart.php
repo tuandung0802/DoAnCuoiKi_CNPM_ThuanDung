@@ -18,6 +18,11 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])){
 	
 }
 ?>
+<?php
+		if(!isset($_GET['id'])){
+			echo "<meta http-equiv='refresh' content='0;URL=?id=live'>";
+		}
+?>
  <div class="main">
     <div class="content">
     	<div class="cartoption">		

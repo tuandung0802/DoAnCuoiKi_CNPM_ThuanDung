@@ -176,6 +176,26 @@
                     $result = $this->db->select($query);
                     return $result;
             }
+            public function getLastestDell(){
+                $query = "SELECT * FROM tbl_product where brandId='2' order by productId desc LIMIT 1";
+                    $result = $this->db->select($query);
+                    return $result;
+            }
+            public function getLastestApple(){
+                $query = "SELECT * FROM tbl_product where brandId='3' order by productId desc LIMIT 1";
+                    $result = $this->db->select($query);
+                    return $result;
+            }
+            public function getLastestSamsung(){
+                $query = "SELECT * FROM tbl_product where brandId='4' order by productId desc LIMIT 1";
+                    $result = $this->db->select($query);
+                    return $result;
+            }
+            public function getLastestOppo(){
+                $query = "SELECT * FROM tbl_product where brandId='5' order by productId desc LIMIT 1";
+                    $result = $this->db->select($query);
+                    return $result;
+            }
 
 
         }

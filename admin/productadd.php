@@ -113,7 +113,7 @@ $pd = new product();
                         <select id="select" name="type">
                             <option>Phân loại</option>
                             <option value="1">Nổi bật</option>
-                            <option value="0">Không nổi bật</option>
+                            <option value="0">Mới</option>
                         </select>
                     </td>
                 </tr>

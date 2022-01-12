@@ -65,10 +65,20 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])){
 		}
 		?>
 				<div class="rightsidebar span_3_of_1">
-					<h2>CATEGORIES</h2>
+					<h2>Danh mục</h2>
 					<ul>
-				      <li><a href="productbycat.php">Mobile Phones</a></li>
-				      
+						<?php
+						$getall_category =  $cat->show_category_frontend();
+						if($getall_category){
+							while($result_allcat = $getall_category->fetch_assoc()){
+
+							
+						?>
+				      <li><a href="productbycat.php?catid=<?php echo $result_allcat['catId']?>"><?php echo $result_allcat['catName']?></a></li>
+				      <?php
+					  }
+					}
+					  ?>
     				</ul>
     	
  				</div>

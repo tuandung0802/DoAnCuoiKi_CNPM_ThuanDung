@@ -1,80 +1,43 @@
+
 <?php
 	include 'inc/header.php';
-	include 'inc/slider.php';
+	// include 'inc/slider.php';
+	
 
+?>
+<?php
+			$login_check = Session::get('customer_login');
+			if($login_check){
+				header('Location:order.php');
+			}
+			?>
+
+<?php
+if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['login'])){
+		
+
+	$login_Customers = $cs->login_customers($_POST);
+	
+}
 ?>
  <div class="main">
     <div class="content">
     	 <div class="login_panel">
-        	<h3>Existing Customers</h3>
-        	<p>Sign in with the form below.</p>
-        	<form action="hello" method="get" id="member">
-                	<input name="Domain" type="text" value="Username" class="field" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Username';}">
-                    <input name="Domain" type="password" value="Password" class="field" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}">
-                 </form>
-                 <p class="note">If you forgot your passoword just enter your email and click <a href="#">here</a></p>
-                    <div class="buttons"><div><button class="grey">Sign In</button></div></div>
-                    </div>
-    	<div class="register_account">
-    		<h3>Register New Account</h3>
-    		<form>
-		   			 <table>
-		   				<tbody>
-						<tr>
-						<td>
-							<div>
-							<input type="text" value="Name" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Name';}" >
-							</div>
-							
-							<div>
-							   <input type="text" value="City" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'City';}">
-							</div>
-							
-							<div>
-								<input type="text" value="Zip-Code" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Zip-Code';}">
-							</div>
-							<div>
-								<input type="text" value="E-Mail" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'E-Mail';}">
-							</div>
-		    			 </td>
-		    			<td>
-						<div>
-							<input type="text" value="Address" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Address';}">
-						</div>
-		    		<div>
-						<select id="country" name="country" onchange="change_country(this.value)" class="frm-field required">
-							<option value="null">Select a Country</option>         
-							<option value="AF">Afghanistan</option>
-							<option value="AL">Albania</option>
-							<option value="DZ">Algeria</option>
-							<option value="AR">Argentina</option>
-							<option value="AM">Armenia</option>
-							<option value="AW">Aruba</option>
-							<option value="AU">Australia</option>
-							<option value="AT">Austria</option>
-							<option value="AZ">Azerbaijan</option>
-							<option value="BS">Bahamas</option>
-							<option value="BH">Bahrain</option>
-							<option value="BD">Bangladesh</option>
-
-		         </select>
-				 </div>		        
-	
-		           <div>
-		          <input type="text" value="Phone" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Phone';}">
-		          </div>
-				  
-				  <div>
-					<input type="text" value="Password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}">
+        	<h3>Khách hàng đại lý</h3>
+        	<p>Đăng nhập đại lý</p>
+			<?php
+			 if(isset($login_Customers)){
+				 echo $login_Customers;
+			 }
+			?>
+        	<form action="" method="POST" >
+                	<input  type="text" name="email" placeholder="Điền Email">
+                    <input  type="password" name="password" placeholder="Điền password" >
+					<p class="note">Nếu quên mật khẩu <a href="#">here</a></p>
+                    <div class="buttons"><div><input type="submit" class="grey" name="login" value="Đăng nhập"></input></div></div>
+				</form>
 				</div>
-		    	</td>
-		    </tr> 
-		    </tbody></table> 
-		   <div class="search"><div><button class="grey">Create Account</button></div></div>
-		    <p class="terms">By clicking 'Create Account' you agree to the <a href="#">Terms &amp; Conditions</a>.</p>
-		    <div class="clear"></div>
-		    </form>
-    	</div>  	
+    	
        <div class="clear"></div>
     </div>
  </div>

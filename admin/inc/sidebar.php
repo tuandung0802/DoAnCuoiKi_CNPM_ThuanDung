@@ -41,6 +41,12 @@
                         <li><a href="productlist.php">Danh sách sản phẩm</a> </li>
                     </ul>
                 </li>
+                <li><a class="menuitem">Quản lí khách hàng</a>
+                    <ul class="submenu">
+                        <li><a href="customeradd.php">Thêm khách hàng</a> </li>
+                        <li><a href="customerlist.php">Danh sách khách hàng</a> </li>
+                    </ul>
+                </li>
             </ul>
         </div>
     </div>

@@ -16,6 +16,8 @@ include_once  './helpers/format.php';
 	$ct = new cart();
 	$us = new user();
 	$cat = new category();
+	$cs = new customer();
+
 	$product = new product();
 ?>
 <?php
@@ -77,7 +79,23 @@ include_once  './helpers/format.php';
 							</a>
 						</div>
 			      </div>
-		   <div class="login"><a href="login.php">Đăng nhập</a></div>
+				  <?php
+				  	if(isset($_GET['customer_id'])){
+						  $delCart = $ct->del_all_data_cart();
+						  Session::destroy();
+					  }
+				  ?>
+		   <div class="login">
+			<?php
+			$login_check = Session::get('customer_login');
+			if($login_check==false){
+				echo'<a href="login.php">Đăng nhập</a></div>';
+			}else{
+				echo '<a href="?customer_id='.Session::get('customer_id').'">Đăng xuất</a></div>';
+			}
+			?>
+		  
+		   
 		 <div class="clear"></div>
 	 </div>
 	 <div class="clear"></div>
@@ -87,7 +105,25 @@ include_once  './helpers/format.php';
 	  <li><a href="index.php">Trang chủ</a></li>
 	  <li><a href="products.php">Sản phẩm</a> </li>
 	  <li><a href="topbrands.php">Thương hiệu</a></li>
-	  <li><a href="cart.php">Giỏ hàng</a></li>
+	  <?php
+		$check_cart = $ct->check_cart();
+		if($check_cart==true) {
+			echo '<li><a href="cart.php">Giỏ hàng</a></li>';
+		}else{
+			echo '';
+		}
+
+	  ?>
+	  
+	  <?php
+		$login_check = Session::get('customer_login');
+		if($login_check==false){
+			echo'';
+		}else{
+	  
+	  echo '<li><a href="profile.php">Thông tin</a></li> ';
+		}
+	  ?>
 	  <li><a href="contact.php">Hỗ trợ</a> </li>
 	  <div class="clear"></div>
 	</ul>

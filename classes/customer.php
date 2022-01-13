@@ -78,7 +78,7 @@
                 }
             }
         }
-        public function show_customer($id){
+        public function show_customers($id){
             $query = "SELECT * FROM tbl_customer WHERE id='$id'";
             $result = $this->db->select($query);
             return $result;

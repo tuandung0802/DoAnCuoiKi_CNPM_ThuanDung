@@ -124,6 +124,76 @@
                 $get_price = $this->db->select($query);
                 return $get_price;
             }
+            public function get_cart_ordered($customer_id){
+                $query = "SELECT * FROM tbl_order WHERE customer_id = '$customer_id'";
+                $get_cart_ordered = $this->db->select($query);
+                return $get_cart_ordered;
+            }
+            public function check_order($customer_id){
+                $sId=session_id();
+                $query = "SELECT * FROM tbl_order WHERE customer_id = '$customer_id'";
+                $result = $this->db->select($query);
+                return $result;
+            }
+            public function get_inbox_cart(){
+                $query = "SELECT * FROM tbl_order Order by date_order";
+                $get_inbox_cart= $this->db->select($query);
+                return $get_inbox_cart;
+            }
+            public function shifted($id,$time,$price){
+                $id = mysqli_real_escape_string($this->db->link, $id);
+                $time = mysqli_real_escape_string($this->db->link,$time);
+                $price = mysqli_real_escape_string($this->db->link,$price);
+                $query = "UPDATE tbl_order SET 
+                    status = '1'
+                    WHERE id = '$id' AND date_order='$time' AND price = '$price'";
+                    $result = $this->db->update($query);
+                    if($result){
+                        
+                        $msg = "<span class='success'>Thành công</span>";
+                        return $msg;
+                    }else{
+                        $msg = "<span class='error'>Thất bại</span>";
+                        return $msg;
+                    }
+
+
+                
+            }
+            public function del_shifted($id,$time,$price){
+                $id = mysqli_real_escape_string($this->db->link, $id);
+                $time = mysqli_real_escape_string($this->db->link,$time);
+                $price = mysqli_real_escape_string($this->db->link,$price);
+                $query = "DELETE FROM tbl_order
+                    WHERE id = '$id' AND date_order='$time' AND price = '$price'";
+                    $result = $this->db->update($query);
+                    if($result){
+                        
+                        $msg = "<span class='success'>Xóa Thành công</span>";
+                        return $msg;
+                    }else{
+                        $msg = "<span class='error'>Xóa Thất bại</span>";
+                        return $msg;
+                    }
+            }
+            public function confirm_shifted($id,$time,$price){
+                $id = mysqli_real_escape_string($this->db->link, $id);
+                $time = mysqli_real_escape_string($this->db->link,$time);
+                $price = mysqli_real_escape_string($this->db->link,$price);
+                $query = "UPDATE tbl_order SET 
+                    status = '2'
+                    WHERE customer_id = '$id' AND date_order='$time' AND price = '$price'";
+                    $result = $this->db->update($query);
+                    if($result){
+                        
+                        $msg = "<span class='success'>Thành công</span>";
+                        return $msg;
+                    }else{
+                        $msg = "<span class='error'>Thất bại</span>";
+                        return $msg;
+                    }
+                    return $result;
+            }
         }
 
         

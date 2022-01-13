@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3307
--- Generation Time: Jan 13, 2022 at 08:24 AM
+-- Generation Time: Jan 13, 2022 at 08:14 PM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 8.0.3
 
@@ -141,15 +141,9 @@ CREATE TABLE `tbl_order` (
   `quantity` int(11) NOT NULL,
   `price` varchar(255) NOT NULL,
   `image` varchar(255) NOT NULL,
+  `status` int(11) NOT NULL DEFAULT 0,
   `date_order` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `tbl_order`
---
-
-INSERT INTO `tbl_order` (`id`, `productId`, `productName`, `customer_id`, `quantity`, `price`, `image`, `date_order`) VALUES
-(3, 6, 'Điện thoại iPhone 11 64GB', 3, 1, '14990000', 'b8ff7118ca.jpg', '2022-01-13 07:01:08');
 
 -- --------------------------------------------------------
 
@@ -247,7 +241,7 @@ ALTER TABLE `tbl_brand`
 -- AUTO_INCREMENT for table `tbl_cart`
 --
 ALTER TABLE `tbl_cart`
-  MODIFY `cartId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `cartId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `tbl_category`
@@ -265,7 +259,7 @@ ALTER TABLE `tbl_customer`
 -- AUTO_INCREMENT for table `tbl_order`
 --
 ALTER TABLE `tbl_order`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `tbl_product`

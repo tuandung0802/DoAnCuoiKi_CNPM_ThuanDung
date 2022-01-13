@@ -16,13 +16,13 @@ if($login_check==false){
 // }else{
 //     $id = $_GET['proid'];
 // }
-
-// if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])){
+$id= Session::get('customer_id');
+if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['save'])){
 		
-// 	$quantity = $_POST['quantity'];
-// 	$addtoCart = $ct->add_to_cart($quantity,$id);
 	
-// }
+	$updateCustomer = $cs->update_customers($_POST, $id);
+	
+}
 
 
 ?>
@@ -31,12 +31,23 @@ if($login_check==false){
     	<div class="section group">
         <div class="content_top">
     		<div class="heading">
-    		<h3>Thông tin người dùng</h3>
+    		<h3>Cập nhật thông tin</h3>
     		</div>
     		<div class="clear"></div>
     	</div>
+        <form action="" method="post">
 			
             <table class=tblone>
+                <tr>
+                    
+
+                    <?php
+                    if(isset($updateCustomer)){
+                        echo '<td colspan="3">'.$updateCustomer.'</td>';
+                    }
+                    ?>
+                    
+                </tr>
                 <?php
                 $id= Session::get('customer_id');
                    $get_customer=$cs->show_customer($id);
@@ -47,35 +58,34 @@ if($login_check==false){
                 <tr>
                     <td>Tên</td>
                     <td>:</td>
-                    <td><?php echo $result['name']?></td>
+                    <td><input type="text" name="name" value="<?php echo $result['name']?>"></td>
                 </tr>
-                <tr>
+                <!-- <tr>
                     <td>Thành phố</td>
                     <td>:</td>
-                    <td><?php echo $result['city']?></td>
-                </tr><tr>
+                    <td><input type="text" name="name" value="<?php echo $result['city']?>"></td>
+                </tr> -->
+                <tr>
                     <td>Số điện thoại</td>
                     <td>:</td>
-                    <td><?php echo $result['phone']?></td>
-                </tr><tr>
-                    <td>Tỉnh</td>
-                    <td>:</td>
-                    <td><?php echo $result['country']?></td>
-                </tr><tr>
+                    <td><input type="text" name="phone" value="<?php echo $result['phone']?>"></td>
+                </tr>
+                
+                <tr>
                     <td>Zipcode</td>
                     <td>:</td>
-                    <td><?php echo $result['zipcode']?></td>
+                    <td><input type="text" name="zipcode" value="<?php echo $result['zipcode']?>"></td>
                 </tr><tr>
                     <td>Email</td>
                     <td>:</td>
-                    <td><?php echo $result['email']?></td>
+                    <td><input type="text" name="email" value="<?php echo $result['email']?>"></td>
                 </tr><tr>
                     <td>Địa chỉ</td>
                     <td>:</td>
-                    <td><?php echo $result['address']?></td>
+                    <td><input type="text" name="address" value="<?php echo $result['address']?>"></td>
                 </tr>
                 <tr>
-                    <td colspan="3"><a href="editprofile.php">Cập nhật thông tin</a></td>
+                    <td colspan="3"><input type="submit" name="save" value="Cập nhật"></input></td>
                     
                 </tr>
                 <?php
@@ -83,6 +93,8 @@ if($login_check==false){
         } 
      ?>
             </table>
+            </form>
+
  				
  		</div>
  	</div>

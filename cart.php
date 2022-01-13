@@ -94,7 +94,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])){
 									?>
 						<table style="float:right;text-align:left;" width="40%">
 							<tr>
-								<th>Sub Total : </th>
+								<th>Giá sản phẩm : </th>
 								<td><?php
 									echo $subtotal;
 									Session::set('sum',$subtotal);
@@ -108,7 +108,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])){
 								<td>10%</td>
 							</tr>
 							<tr>
-								<th>Grand Total :</th>
+								<th>Tổng :</th>
 								<td><?php $vat = $subtotal * 0.1;
 								$gtotal = $vat + $subtotal;
 								echo $gtotal?> </td>
@@ -125,7 +125,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])){
 							<a href="index.php"> <img src="images/shop.png" alt="" /></a>
 						</div>
 						<div class="shopright">
-							<a href="login.php"> <img src="images/check.png" alt="" /></a>
+							<a href="payment.php"> <img src="images/check.png" alt="" /></a>
 						</div>
 					</div>
     	</div>  	

@@ -78,8 +78,36 @@
                 }
             }
         }
+        public function show_customer($id){
+            $query = "SELECT * FROM tbl_customer WHERE id='$id'";
+            $result = $this->db->select($query);
+            return $result;
+        }
+        public function update_customers($data, $id){
+            $name = mysqli_real_escape_string($this->db->link, $data['name']);
+            $zipcode = mysqli_real_escape_string($this->db->link, $data['zipcode']);
+            $email = mysqli_real_escape_string($this->db->link, $data['email']);
+            $address = mysqli_real_escape_string($this->db->link, $data['address']);
+            $phone = mysqli_real_escape_string($this->db->link, $data['phone']);
+
+            if($name=="" || $zipcode=="" || $email==""  || $address=="" || $phone==""  ){
+                $alert = "<span class='error'>Các mục không được để trống</span>";
+                return $alert;
+            }else{
+               
+                    $query = "UPDATE tbl_customer SET name='$name',zipcode='$zipcode',email='$email',address='$address',phone='$phone' where id='$id' ";
+                    $result = $this->db->insert($query);
+                    if($result){
+                        $alert = "<span class='success'>Cập nhật khách hàng thành công</span>";
+                        return $alert;
+                    }else{
+                        $alert = "<span class='error'>Cập nhất khách hàng thất bại </span>";
+                        return $alert;
+                    
+                    }
+                    }
     
-    }
+                }
         
-        
+            }
 ?>

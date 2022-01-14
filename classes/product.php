@@ -197,6 +197,27 @@
                     return $result;
             }
 
+            public function getpdDell(){
+                $query = "SELECT * FROM tbl_product where brandId='2' order by productId desc ";
+                    $result = $this->db->select($query);
+                    return $result;
+            }
+            public function getpdApple(){
+                $query = "SELECT * FROM tbl_product where brandId='3' order by productId desc ";
+                    $result = $this->db->select($query);
+                    return $result;
+            }
+            public function getpdSamsung(){
+                $query = "SELECT * FROM tbl_product where brandId='4' order by productId desc ";
+                    $result = $this->db->select($query);
+                    return $result;
+            }
+            public function getpdOppo(){
+                $query = "SELECT * FROM tbl_product where brandId='5' order by productId desc ";
+                    $result = $this->db->select($query);
+                    return $result;
+            }
+
 
         }
 

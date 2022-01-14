@@ -70,7 +70,7 @@ include_once  './helpers/format.php';
 									$sum = Session::get("sum");
 									$qty = Session::get("qty");
 
-									echo $sum.' '.'đ'.'-'.'SL:'.$qty;
+									echo $fm->format_currency($sum).' '.'đ'.'-'.'SL:'.$qty;
 									}else{
 										echo 'Trống';
 									}

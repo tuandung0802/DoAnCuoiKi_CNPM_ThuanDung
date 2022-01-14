@@ -88,12 +88,12 @@ if(isset($_GET['orderid']) AND $_GET['orderid']=='order'){
 							<tr>
 								<td><?php echo $i  ?></td>
 								<td><?php echo $result['productName']  ?></td>
-								<td><?php echo $result['price'] ?></td>
+								<td><?php echo $fm->format_currency($result['price'])." "."VND"  ?></td>
 								<td>
                                 <?php echo $result['quantity'] ?>
 								</td>
 								<td><?php $total = $result['price'] * $result['quantity'];
-								echo $total?>
+								echo $fm->format_currency($total)." "."VND" ?>
 							
 							<?php
 									$subtotal += $total;
@@ -117,7 +117,7 @@ if(isset($_GET['orderid']) AND $_GET['orderid']=='order'){
 							<tr>
 								<th>Giá sản phẩm : </th>
 								<td><?php
-									echo $subtotal;
+									echo $fm->format_currency($subtotal)." "."VND";
 									Session::set('sum',$subtotal);
 									Session::set('qty',$qty);
 
@@ -126,13 +126,13 @@ if(isset($_GET['orderid']) AND $_GET['orderid']=='order'){
 							</tr>
 							<tr>
 								<th>VAT : </th>
-								<td>10% (<?php echo $vat = $subtotal*0.1; ?>)</td>
+								<td>10% (<?php echo $fm->format_currency($vat = $subtotal*0.1); ?>)</td>
 							</tr>
 							<tr>
 								<th>Tổng :</th>
 								<td><?php $vat = $subtotal * 0.1;
 								$gtotal = $vat + $subtotal;
-								echo $gtotal?> </td>
+								echo $fm->format_currency($gtotal)." "."VND"?> </td>
 							</tr>
 							<?php
 									}else{

@@ -1,6 +1,6 @@
 <?php
 	include 'inc/header.php';
-	include 'inc/slider.php';
+	// include 'inc/slider.php';
 
 ?>
 <?php
@@ -61,7 +61,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])){
 							<tr>
 								<td><?php echo $result['productName']  ?></td>
 								<td><img src="admin/uploads/<?php echo $result['image'] ?>" alt=""/></td>
-								<td><?php echo $result['price'] ?></td>
+								<td><?php echo $fm->format_currency($result['price'])." "."VND" ?></td>
 								<td>
 									<form action="" method="post">
 										<input type="hidden" name="cartId"  value="<?php echo $result['cartId'] ?>"/>
@@ -70,7 +70,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])){
 									</form>
 								</td>
 								<td><?php $total = $result['price'] * $result['quantity'];
-								echo $total?>
+								echo $fm->format_currency($total)." "."VND"?>
 							</td>
 								<td><a href="?cartid=<?php echo $result['cartId'] ?>">Xóa</a></td>
 							</tr>
@@ -96,7 +96,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])){
 							<tr>
 								<th>Giá sản phẩm : </th>
 								<td><?php
-									echo $subtotal;
+									echo $fm->format_currency($subtotal)." "."VND";
 									Session::set('sum',$subtotal);
 									Session::set('qty',$qty);
 
@@ -111,7 +111,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])){
 								<th>Tổng :</th>
 								<td><?php $vat = $subtotal * 0.1;
 								$gtotal = $vat + $subtotal;
-								echo $gtotal?> </td>
+								echo $fm->format_currency($gtotal)." "."VND" ?> </td>
 							</tr>
 							<?php
 									}else{

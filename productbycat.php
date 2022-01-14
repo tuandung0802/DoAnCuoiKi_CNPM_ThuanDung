@@ -49,7 +49,7 @@ if(!isset($_GET['catid']) || $_GET['catid']==Null){
 					 <a href="preview-3.php"><img src="admin/uploads/<?php echo $result['image'] ?>" /></a>
 					 <h2><?php echo $result['productName'] ?> </h2>
 					 <p><?php  echo $fm->textShorten($result['product_desc'],10) ?></p>
-					 <p><span class="price"><?php echo $result['price']." "."VND" ?></span></p>
+					 <p><span class="price"><?php echo $fm->format_currency($result['price'])." "."VND" ?></span></p>
 				     <div class="button"><span><a href="details.php?proid=<?php echo $result['productId']?>" class="details">Chi tiết</a></span></div>
 				</div>
 				<?php

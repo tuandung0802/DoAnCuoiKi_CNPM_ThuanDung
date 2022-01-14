@@ -35,7 +35,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])){
 					<h2><?php echo $result_details['productName'] ?></h2>
 					<p><?php echo $fm->textShorten($result_details['product_desc']) ?></p>					
 					<div class="price">
-						<p>Giá: <span><?php echo $result_details['price']." "."VND" ?></span></p>
+						<p>Giá: <span><?php echo $fm->format_currency($result_details['price'])." "."VND" ?></span></p>
 						<p>Danh mục: <span><?php echo $result_details['catName'] ?></span></p>
 						<p>Nhà cung cấp:<span><?php echo $result_details['brandName'] ?></span></p>
 					</div>

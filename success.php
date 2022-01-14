@@ -42,7 +42,7 @@ if(isset($_GET['orderid']) AND $_GET['orderid']=='order'){
                 }
             }
             ?>
-        <p>Bạn đã đặt hàng thành công đơn hàng có giá trị: <?php $vat = $amount * 0.1  ; echo $total = $vat + $amount; ?> VNĐ</p>
+        <p>Bạn đã đặt hàng thành công đơn hàng có giá trị: <?php $vat = $amount * 0.1  ; echo $fm->format_currency($total = $vat + $amount); ?> VNĐ</p>
         <p>Chúng tôi sẽ sớm liên lạc với bạn. Xem chi tiết đơn hàng tại  <a href="orderdetails.php">đây</a></p>
             </div>
         </div>

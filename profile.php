@@ -39,7 +39,7 @@ if($login_check==false){
             <table class=tblone>
                 <?php
                 $id= Session::get('customer_id');
-                   $get_customer=$cs->show_customer($id);
+                   $get_customer=$cs->show_customers($id);
                    if($get_customer){
                        while($result = $get_customer->fetch_assoc()){
 

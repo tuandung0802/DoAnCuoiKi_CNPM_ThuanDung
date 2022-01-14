@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3307
--- Generation Time: Jan 13, 2022 at 08:14 PM
+-- Generation Time: Jan 14, 2022 at 05:02 PM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 8.0.3
 
@@ -20,6 +20,133 @@ SET time_zone = "+00:00";
 --
 -- Database: `finalprojectcnpm`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `invoice_order`
+--
+
+CREATE TABLE `invoice_order` (
+  `order_id` int(11) UNSIGNED NOT NULL,
+  `user_id` int(11) UNSIGNED NOT NULL,
+  `order_date` timestamp NOT NULL DEFAULT current_timestamp(),
+  `order_receiver_name` varchar(250) CHARACTER SET utf8mb4 NOT NULL,
+  `order_receiver_address` varchar(255) CHARACTER SET utf8mb4 NOT NULL,
+  `order_total_before_tax` varchar(255) CHARACTER SET utf8mb4 NOT NULL,
+  `order_total_tax` varchar(255) CHARACTER SET utf8mb4 NOT NULL,
+  `order_tax_per` varchar(250) CHARACTER SET utf8mb4 NOT NULL,
+  `order_total_after_tax` varchar(255) CHARACTER SET utf8mb4 NOT NULL,
+  `order_amount_paid` varchar(255) CHARACTER SET utf8mb4 NOT NULL,
+  `order_total_amount_due` varchar(255) CHARACTER SET utf8mb4 NOT NULL,
+  `note` text CHARACTER SET utf8mb4 NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `invoice_order`
+--
+
+INSERT INTO `invoice_order` (`order_id`, `user_id`, `order_date`, `order_receiver_name`, `order_receiver_address`, `order_total_before_tax`, `order_total_tax`, `order_tax_per`, `order_total_after_tax`, `order_amount_paid`, `order_total_amount_due`, `note`) VALUES
+(687, 123457, '2022-01-14 11:09:03', 'Nhuthuan Store', '19 Nguyen Huu Tho, TP HCM', '273775000', '27377500', '10', '301152500', '', '301152500', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `invoice_order_in`
+--
+
+CREATE TABLE `invoice_order_in` (
+  `order_id` int(11) UNSIGNED NOT NULL,
+  `user_id` int(11) UNSIGNED NOT NULL,
+  `order_date` timestamp NOT NULL DEFAULT current_timestamp(),
+  `order_import_name` varchar(250) CHARACTER SET utf8mb4 NOT NULL,
+  `order_import_address` varchar(255) CHARACTER SET utf8mb4 NOT NULL,
+  `order_total_before_tax` varchar(255) CHARACTER SET utf8mb4 NOT NULL,
+  `order_total_tax` varchar(255) CHARACTER SET utf8mb4 NOT NULL,
+  `order_tax_per` varchar(250) CHARACTER SET utf8mb4 NOT NULL,
+  `order_total_after_tax` varchar(255) CHARACTER SET utf8mb4 NOT NULL,
+  `order_amount_paid` varchar(255) CHARACTER SET utf8mb4 NOT NULL,
+  `order_total_amount_due` varchar(255) CHARACTER SET utf8mb4 NOT NULL,
+  `note` text CHARACTER SET utf8mb4 NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `invoice_order_in`
+--
+
+INSERT INTO `invoice_order_in` (`order_id`, `user_id`, `order_date`, `order_import_name`, `order_import_address`, `order_total_before_tax`, `order_total_tax`, `order_tax_per`, `order_total_after_tax`, `order_amount_paid`, `order_total_amount_due`, `note`) VALUES
+(1, 123457, '2022-01-14 15:07:53', 'APPLE', 'Hoa Kì', '5000000', '500000', '10', '5500000', '', '5500000', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `invoice_order_item`
+--
+
+CREATE TABLE `invoice_order_item` (
+  `order_item_id` int(11) NOT NULL,
+  `order_id` int(11) UNSIGNED NOT NULL,
+  `item_code` varchar(250) CHARACTER SET utf8mb4 NOT NULL,
+  `item_name` varchar(250) CHARACTER SET utf8mb4 NOT NULL,
+  `order_item_quantity` varchar(250) CHARACTER SET utf8mb4 NOT NULL,
+  `order_item_price` varchar(250) CHARACTER SET utf8mb4 NOT NULL,
+  `order_item_final_amount` varchar(250) CHARACTER SET utf8mb4 NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `invoice_order_item`
+--
+
+INSERT INTO `invoice_order_item` (`order_item_id`, `order_id`, `item_code`, `item_name`, `order_item_quantity`, `order_item_price`, `order_item_final_amount`) VALUES
+(4380, 687, '', 'Iphone 13 Promax', '10', '27000000', '270000000'),
+(4381, 687, '', 'Cáp sạc nhanh ', '25', '151000', '3775000');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `invoice_order_item_in`
+--
+
+CREATE TABLE `invoice_order_item_in` (
+  `order_item_id` int(11) NOT NULL,
+  `order_id` int(11) UNSIGNED NOT NULL,
+  `item_code` varchar(250) CHARACTER SET utf8mb4 NOT NULL,
+  `item_name` varchar(250) CHARACTER SET utf8mb4 NOT NULL,
+  `order_item_quantity` varchar(250) CHARACTER SET utf8mb4 NOT NULL,
+  `order_item_price` varchar(250) CHARACTER SET utf8mb4 NOT NULL,
+  `order_item_final_amount` varchar(250) CHARACTER SET utf8mb4 NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `invoice_order_item_in`
+--
+
+INSERT INTO `invoice_order_item_in` (`order_item_id`, `order_id`, `item_code`, `item_name`, `order_item_quantity`, `order_item_price`, `order_item_final_amount`) VALUES
+(4, 1, '', 'Iphone 15', '2', '1000000', '2000000'),
+(5, 1, '', 'Iphone 16', '2', '1500000', '3000000');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `invoice_user`
+--
+
+CREATE TABLE `invoice_user` (
+  `id` int(11) UNSIGNED NOT NULL,
+  `email` varchar(100) CHARACTER SET utf8mb4 NOT NULL,
+  `password` varchar(100) CHARACTER SET utf8mb4 NOT NULL,
+  `first_name` varchar(100) CHARACTER SET utf8mb4 NOT NULL,
+  `last_name` varchar(100) CHARACTER SET utf8mb4 NOT NULL,
+  `mobile` bigint(20) NOT NULL,
+  `address` text CHARACTER SET utf8mb4 NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `invoice_user`
+--
+
+INSERT INTO `invoice_user` (`id`, `email`, `password`, `first_name`, `last_name`, `mobile`, `address`) VALUES
+(123457, 'ketoan1@gmail.com', '123456', 'Ke Toan ', '1', 167809743, '749/7 Huỳnh Tấn Phát - TP HCM');
 
 -- --------------------------------------------------------
 
@@ -50,7 +177,7 @@ INSERT INTO `tbl_admin` (`adminID`, `adminName`, `adminEmail`, `adminUser`, `adm
 --
 
 CREATE TABLE `tbl_brand` (
-  `brandId` int(11) NOT NULL,
+  `brandId` int(11) UNSIGNED NOT NULL,
   `brandName` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -72,7 +199,7 @@ INSERT INTO `tbl_brand` (`brandId`, `brandName`) VALUES
 
 CREATE TABLE `tbl_cart` (
   `cartId` int(11) NOT NULL,
-  `productId` int(11) NOT NULL,
+  `productId` int(11) UNSIGNED NOT NULL,
   `sId` varchar(255) NOT NULL,
   `productName` varchar(255) NOT NULL,
   `price` varchar(200) NOT NULL,
@@ -87,7 +214,7 @@ CREATE TABLE `tbl_cart` (
 --
 
 CREATE TABLE `tbl_category` (
-  `catId` int(11) NOT NULL,
+  `catId` int(11) UNSIGNED NOT NULL,
   `catName` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -109,7 +236,7 @@ INSERT INTO `tbl_category` (`catId`, `catName`) VALUES
 --
 
 CREATE TABLE `tbl_customer` (
-  `id` int(11) NOT NULL,
+  `id` int(11) UNSIGNED NOT NULL,
   `name` varchar(200) NOT NULL,
   `address` varchar(200) NOT NULL,
   `city` varchar(30) NOT NULL,
@@ -135,9 +262,9 @@ INSERT INTO `tbl_customer` (`id`, `name`, `address`, `city`, `country`, `zipcode
 
 CREATE TABLE `tbl_order` (
   `id` int(11) NOT NULL,
-  `productId` int(11) NOT NULL,
+  `productId` int(11) UNSIGNED NOT NULL,
   `productName` varchar(255) NOT NULL,
-  `customer_id` int(11) NOT NULL,
+  `customer_id` int(11) UNSIGNED NOT NULL,
   `quantity` int(11) NOT NULL,
   `price` varchar(255) NOT NULL,
   `image` varchar(255) NOT NULL,
@@ -152,10 +279,10 @@ CREATE TABLE `tbl_order` (
 --
 
 CREATE TABLE `tbl_product` (
-  `productId` int(11) NOT NULL,
+  `productId` int(11) UNSIGNED NOT NULL,
   `productName` varchar(255) NOT NULL,
-  `catId` int(11) NOT NULL,
-  `brandId` int(11) NOT NULL,
+  `catId` int(11) UNSIGNED NOT NULL,
+  `brandId` int(11) UNSIGNED NOT NULL,
   `product_desc` text NOT NULL,
   `type` int(11) NOT NULL,
   `price` varchar(255) NOT NULL,
@@ -180,6 +307,40 @@ INSERT INTO `tbl_product` (`productId`, `productName`, `catId`, `brandId`, `prod
 --
 
 --
+-- Indexes for table `invoice_order`
+--
+ALTER TABLE `invoice_order`
+  ADD PRIMARY KEY (`order_id`),
+  ADD KEY `user_id` (`user_id`);
+
+--
+-- Indexes for table `invoice_order_in`
+--
+ALTER TABLE `invoice_order_in`
+  ADD PRIMARY KEY (`order_id`),
+  ADD KEY `user_id` (`user_id`);
+
+--
+-- Indexes for table `invoice_order_item`
+--
+ALTER TABLE `invoice_order_item`
+  ADD PRIMARY KEY (`order_item_id`),
+  ADD KEY `order_id` (`order_id`);
+
+--
+-- Indexes for table `invoice_order_item_in`
+--
+ALTER TABLE `invoice_order_item_in`
+  ADD PRIMARY KEY (`order_item_id`),
+  ADD KEY `order_id` (`order_id`);
+
+--
+-- Indexes for table `invoice_user`
+--
+ALTER TABLE `invoice_user`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `tbl_admin`
 --
 ALTER TABLE `tbl_admin`
@@ -195,7 +356,8 @@ ALTER TABLE `tbl_brand`
 -- Indexes for table `tbl_cart`
 --
 ALTER TABLE `tbl_cart`
-  ADD PRIMARY KEY (`cartId`);
+  ADD PRIMARY KEY (`cartId`),
+  ADD KEY `productId` (`productId`);
 
 --
 -- Indexes for table `tbl_category`
@@ -213,17 +375,51 @@ ALTER TABLE `tbl_customer`
 -- Indexes for table `tbl_order`
 --
 ALTER TABLE `tbl_order`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `productId` (`productId`,`customer_id`),
+  ADD KEY `customer_id` (`customer_id`);
 
 --
 -- Indexes for table `tbl_product`
 --
 ALTER TABLE `tbl_product`
-  ADD PRIMARY KEY (`productId`);
+  ADD PRIMARY KEY (`productId`),
+  ADD KEY `catId` (`catId`,`brandId`),
+  ADD KEY `brandId` (`brandId`);
 
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `invoice_order`
+--
+ALTER TABLE `invoice_order`
+  MODIFY `order_id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=688;
+
+--
+-- AUTO_INCREMENT for table `invoice_order_in`
+--
+ALTER TABLE `invoice_order_in`
+  MODIFY `order_id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `invoice_order_item`
+--
+ALTER TABLE `invoice_order_item`
+  MODIFY `order_item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4382;
+
+--
+-- AUTO_INCREMENT for table `invoice_order_item_in`
+--
+ALTER TABLE `invoice_order_item_in`
+  MODIFY `order_item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `invoice_user`
+--
+ALTER TABLE `invoice_user`
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=123458;
 
 --
 -- AUTO_INCREMENT for table `tbl_admin`
@@ -235,7 +431,7 @@ ALTER TABLE `tbl_admin`
 -- AUTO_INCREMENT for table `tbl_brand`
 --
 ALTER TABLE `tbl_brand`
-  MODIFY `brandId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `brandId` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `tbl_cart`
@@ -247,13 +443,13 @@ ALTER TABLE `tbl_cart`
 -- AUTO_INCREMENT for table `tbl_category`
 --
 ALTER TABLE `tbl_category`
-  MODIFY `catId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `catId` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `tbl_customer`
 --
 ALTER TABLE `tbl_customer`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `tbl_order`
@@ -265,7 +461,55 @@ ALTER TABLE `tbl_order`
 -- AUTO_INCREMENT for table `tbl_product`
 --
 ALTER TABLE `tbl_product`
-  MODIFY `productId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `productId` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `invoice_order`
+--
+ALTER TABLE `invoice_order`
+  ADD CONSTRAINT `invoice_order_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `invoice_user` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `invoice_order_in`
+--
+ALTER TABLE `invoice_order_in`
+  ADD CONSTRAINT `invoice_order_in_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `invoice_user` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `invoice_order_item`
+--
+ALTER TABLE `invoice_order_item`
+  ADD CONSTRAINT `invoice_order_item_ibfk_1` FOREIGN KEY (`order_id`) REFERENCES `invoice_order` (`order_id`) ON DELETE CASCADE ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `invoice_order_item_in`
+--
+ALTER TABLE `invoice_order_item_in`
+  ADD CONSTRAINT `invoice_order_item_in_ibfk_1` FOREIGN KEY (`order_id`) REFERENCES `invoice_order_in` (`order_id`) ON DELETE CASCADE ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `tbl_cart`
+--
+ALTER TABLE `tbl_cart`
+  ADD CONSTRAINT `tbl_cart_ibfk_1` FOREIGN KEY (`productId`) REFERENCES `tbl_product` (`productId`) ON DELETE CASCADE ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `tbl_order`
+--
+ALTER TABLE `tbl_order`
+  ADD CONSTRAINT `tbl_order_ibfk_1` FOREIGN KEY (`customer_id`) REFERENCES `tbl_customer` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION,
+  ADD CONSTRAINT `tbl_order_ibfk_2` FOREIGN KEY (`productId`) REFERENCES `tbl_product` (`productId`) ON DELETE CASCADE ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `tbl_product`
+--
+ALTER TABLE `tbl_product`
+  ADD CONSTRAINT `tbl_product_ibfk_1` FOREIGN KEY (`catId`) REFERENCES `tbl_category` (`catId`) ON DELETE CASCADE ON UPDATE NO ACTION,
+  ADD CONSTRAINT `tbl_product_ibfk_2` FOREIGN KEY (`brandId`) REFERENCES `tbl_brand` (`brandId`) ON DELETE CASCADE ON UPDATE NO ACTION;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
